@@ -40,7 +40,6 @@ export default function App() {
   };
 
   const gameOverHandler = (totalRounds) => {
-    console.log("rounds: " + totalRounds);
     setGuessRounds(totalRounds);
   };
 
@@ -56,7 +55,6 @@ export default function App() {
       <GameScreen userChoice={userNumber} onGameOver={gameOverHandler} />
     );
   } else if (guessRounds > 0) {
-    console.log("over");
     content = (
       <GameOverScreen
         roundsNumber={guessRounds}

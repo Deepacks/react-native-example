@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Alert,
-  Button,
   Keyboard,
   StyleSheet,
   Text,
@@ -12,8 +11,10 @@ import {
 import Card from "../components/Card";
 import Input from "../components/Input";
 import NumberContainer from "../components/NumberContainer";
+import MainButton from "../components/MainButton";
+import SecondaryButton from "../components/SecondaryButton";
 import defaultStyles from "../constants/default-styles";
-import Colors from "../constants/colors";
+import colors from "../constants/colors";
 
 const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -54,9 +55,10 @@ const StartGameScreen = (props) => {
       <Card style={styles.confirmedCard}>
         <Text style={defaultStyles.bodyText}>You selected</Text>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button
+        <MainButton
           title="START GAME"
           onPress={() => props.onStartGame(selectedNumber)}
+          style={{ marginTop: 5 }}
         />
       </Card>
     );
@@ -79,20 +81,18 @@ const StartGameScreen = (props) => {
             value={enteredValue}
           />
           <View style={styles.buttonContainer}>
-            <View style={styles.button}>
-              <Button
-                title="Reset"
-                onPress={resetHandler}
-                color={Colors.secondary}
-              />
-            </View>
-            <View style={styles.button}>
-              <Button
-                title="Confirm"
-                onPress={confirmHandler}
-                color={Colors.primary}
-              />
-            </View>
+            <SecondaryButton
+              title="Reset"
+              onPress={resetHandler}
+              style={styles.button}
+              textColor={colors.secondary}
+            />
+            <MainButton
+              title="Confirm"
+              onPress={confirmHandler}
+              style={styles.button}
+              textColor={colors.primary}
+            />
           </View>
         </Card>
         {confirmedOutput}
@@ -111,22 +111,26 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   inputContainer: {
-    width: 300,
+    width: "100%",
     maxWidth: "80%",
     alignItems: "center",
   },
   input: {
     width: 30,
     textAlign: "center",
+    marginTop: 20,
   },
   buttonContainer: {
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-between",
     paddingHorizontal: 15,
+    marginTop: 4,
   },
   button: {
-    width: 85,
+    width: 100,
+    paddingHorizontal: 10,
+    backgroundColor: "white",
   },
   confirmedCard: {
     marginTop: 20,

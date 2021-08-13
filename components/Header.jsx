@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-import TitleText from "./TitleText";
+import defaultStyles from "../constants/default-styles";
 import Colors from "../constants/colors";
 
 const Header = (props) => {
   return (
     <View style={styles.header}>
-      <TitleText>{props.title}</TitleText>
+      <Text style={defaultStyles.title}>{props.title}</Text>
     </View>
   );
 };
